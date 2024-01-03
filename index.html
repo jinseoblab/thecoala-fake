@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>FAKE THE COALA</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"
+        ></script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap');
+            body {
+                font-family: 'Nanum Gothic', sans-serif;
+            }
+            #idinput,
+            #pwinput {
+                max-width: 250px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="login">
+            <h2>로그인</h2>
+
+            <form id="loginform">
+                <div class="input-group has-validation">
+                    <span class="input-group-text">ID</span>
+                    <div class="form-floating">
+                        <input
+                            type="text"
+                            id="idinput"
+                            placeholder="ID를 입력하세요"
+                            autofocus
+                            required
+                            class="form-control"
+                        />
+                        <label for="idinput">아이디를 입력하세요</label>
+                    </div>
+                    <div class="invalid-feedback">아이디를 입력하세요.</div>
+                </div>
+                <div class="input-group has-validation">
+                    <span class="input-group-text">비밀번호</span>
+                    <div class="form-floating">
+                        <input
+                            type="password"
+                            id="pwinput"
+                            placeholder="비밀번호를 입력하세요"
+                            required
+                            class="form-control"
+                        />
+                        <label for="pwinput">비밀번호를 입력하세요</label>
+                    </div>
+                    <div class="invalid-feedback">비밀번호를 입력하세요.</div>
+                </div>
+                <br />
+                <button type="submit" class="btn btn-success">로그인</button>
+            </form>
+            <code id="loginerr"></code>
+        </div>
+        <div id="main" hidden>
+            <select id="select" class="form-select" aria-label="Default select example" style="max-width: 100px">
+                <option disabled selected>선생님 목록</option>
+            </select>
+            <p id="previous"></p>
+            <iframe src="" frameborder="0" id="problem" height="450"></iframe>
+            <p id="coco"></p>
+            <h3>C++ 제출</h3>
+            <form id="codesubmit">
+                <div id="yourcode"></div>
+                <br />
+                <button type="submit" class="btn btn-primary">제출</button>
+            </form>
+            <br />
+            <h3>최근 푼 문제</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>문제 번호</th>
+                        <th>받은 CoCo™️</th>
+                        <th>컴파일 횟수</th>
+                        <th>시간</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </div>
+
+        <script src="index.js"></script>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.31.0/src-min-noconflict/ace.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/ace-builds@1.31.0/css/ace.min.css" rel="stylesheet" />
+    <script>
+        const element = document.getElementById('yourcode');
+        const aceEditor = ace.edit(element);
+        aceEditor.setOptions({
+            enableBasicAutocompletion: true,
+            enableLiveAutocompletion: true,
+            showPrintMargin: false,
+            maxLines: 1000,
+            fontSize: '100%',
+        });
+        aceEditor.setTheme('ace/theme/chrome');
+        aceEditor.renderer.setOption('showLineNumbers', true);
+        aceEditor.getSession().setMode('ace/mode/c_cpp');
+    </script>
+</html>
